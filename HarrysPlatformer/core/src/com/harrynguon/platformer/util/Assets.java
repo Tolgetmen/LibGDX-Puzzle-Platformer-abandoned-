@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -26,6 +27,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public static final Assets instance = new Assets();
 
     public PlayerAssets playerAssets;
+    public SoundAssets soundAssets;
 
     /**
      * The instance of the asset manager to be parsed around (it will be contained inside the
@@ -43,9 +45,11 @@ public class Assets implements Disposable, AssetErrorListener {
     public void init(AssetManager assetManager) {
         this.assetManager = assetManager;
         assetManager.load(Constants.PLAYER_ATLAS, TextureAtlas.class);
+        assetManager.load(Constants.MAIN_MENU_MUSIC, Music.class);
         assetManager.finishLoading();
 
         playerAssets = new PlayerAssets((TextureAtlas) assetManager.get(Constants.PLAYER_ATLAS));
+        soundAssets = new SoundAssets();
     }
 
     /**
@@ -81,6 +85,15 @@ public class Assets implements Disposable, AssetErrorListener {
             walkAnimations.add(new TextureRegion(atlas.findRegion("alienGreen_walk1")));
             walkAnimations.add(new TextureRegion(atlas.findRegion("alienGreen_walk2")));
             walk = new Animation<TextureRegion>(0.1f, walkAnimations, Animation.PlayMode.LOOP);
+        }
+    }
+
+    public class SoundAssets {
+        public final Music mainMenu;
+
+        public SoundAssets() {
+            mainMenu = assetManager.get("sounds/mainmenu.wav");
+            mainMenu.setLooping(true);
         }
     }
 }
