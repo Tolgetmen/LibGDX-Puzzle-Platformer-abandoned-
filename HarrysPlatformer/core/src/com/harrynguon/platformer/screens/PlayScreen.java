@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.harrynguon.platformer.PlatformerGame;
 import com.harrynguon.platformer.control.Controller;
 import com.harrynguon.platformer.entities.Player;
+import com.harrynguon.platformer.util.Assets;
 import com.harrynguon.platformer.util.Constants;
 import com.harrynguon.platformer.util.EntitySpawner;
 
@@ -80,6 +81,7 @@ public class PlayScreen extends BaseScreen {
         // initial camera position
         camera.position.x = player.b2body.getPosition().x;
         camera.position.y = player.b2body.getPosition().y;
+        Assets.instance.soundAssets.levelOne.play();
     }
 
     /**

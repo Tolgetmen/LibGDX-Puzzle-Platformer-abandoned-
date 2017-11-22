@@ -71,7 +71,7 @@ public class MainMenuScreen extends BaseScreen {
         BitmapFont labelsFont = new BitmapFont();
         labelsFont.getData().setScale(1.5f);
         labels.font = labelsFont;
-        TextButton titleLabel = new TextButton("The Lost Person Prototype", title);
+        TextButton titleLabel = new TextButton("The Lost Person (Prototype)", title);
         TextButton playButton = new TextButton("Play", labels);
         playButton.setSize(200, 400);
         TextButton optionsButton = new TextButton("Options", labels);

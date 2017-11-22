@@ -48,6 +48,7 @@ public class Assets implements Disposable, AssetErrorListener {
         assetManager.load(Constants.PLAYER_ATLAS, TextureAtlas.class);
         assetManager.load(Constants.MAIN_MENU_MUSIC, Music.class);
         assetManager.load(Constants.BUTTON_SOUND, Sound.class);
+        assetManager.load(Constants.LEVEL1_MUSIC, Music.class);
         assetManager.finishLoading();
 
         playerAssets = new PlayerAssets((TextureAtlas) assetManager.get(Constants.PLAYER_ATLAS));
@@ -94,11 +95,14 @@ public class Assets implements Disposable, AssetErrorListener {
 
         public final Music mainMenu;
         public final Sound btnSound;
+        public final Music levelOne;
 
         public SoundAssets() {
             mainMenu = assetManager.get(Constants.MAIN_MENU_MUSIC);
             mainMenu.setLooping(true);
             btnSound = assetManager.get(Constants.BUTTON_SOUND);
+            levelOne = assetManager.get(Constants.LEVEL1_MUSIC);
+            levelOne.setLooping(true);
         }
     }
 }

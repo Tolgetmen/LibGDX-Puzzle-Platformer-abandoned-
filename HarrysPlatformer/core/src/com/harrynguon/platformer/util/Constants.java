@@ -24,6 +24,7 @@ public class Constants {
     /** Music & SFX */
     public static final String MAIN_MENU_MUSIC = "sounds/mainmenu/mainmenu.wav";
     public static final String BUTTON_SOUND = "sounds/mainmenu/load.wav";
+    public static final String LEVEL1_MUSIC = "sounds/level1/toesandwater.mp3";
 
     /**
      * Private constructor, meaning this class cannot be instantiated
