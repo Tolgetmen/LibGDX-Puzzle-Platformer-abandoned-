@@ -7,6 +7,9 @@ import com.harrynguon.platformer.PlatformerGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "Platformer Test";
+		config.width = 1000;
+		config.height = 624;
 		new LwjglApplication(new PlatformerGame(), config);
 	}
 }

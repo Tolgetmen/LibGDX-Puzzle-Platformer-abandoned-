@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="21" tilewidth="64" tileheight="64" nextobjectid="42">
+ <tileset firstgid="1" source="platformertiles.tsx"/>
+ <layer name="Tile Layer 1" width="50" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDDVgjsbnQ2L7IbEb6eAWSoALELsSgd0GyoFEAHcgdkbDkVjEYHgwAmx+IIQHEwCleXL8MNj8Qa4fqO2PK2h8HxL04ssP+Vjk0MUoAbDyBAbykdiklCOUxAM5/oCV2TD3xzFAwgybP0Di8Vj8k8aAGk/U8AOx/iC2HCcHE0ovuMRI9Qe1wovWGBfwweIH9HDBVi/hq6sGwh+0igdYWFDbv7T0AzluJSYvYDMfGZjj8AMhs0mxm1ZhQIt4oNRd5MQjDLjQ0A/0wCAAACwPhuM=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="10" x="64" y="1280" width="3072" height="64"/>
+  <object id="11" x="0" y="0" width="64" height="1344"/>
+  <object id="12" x="3136" y="64" width="64" height="1280"/>
+  <object id="13" x="64" y="0" width="3136" height="64"/>
+  <object id="15" x="2432" y="320" width="704" height="960"/>
+  <object id="16" x="512" y="832" width="1920" height="448"/>
+  <object id="17" x="2176" y="576" width="256" height="256"/>
+  <object id="18" x="2048" y="704" width="128" height="128"/>
+  <object id="19" x="2304" y="448" width="128" height="128"/>
+  <object id="20" x="2368" y="384" width="64" height="64"/>
+  <object id="22" x="2240" y="512" width="64" height="64"/>
+  <object id="23" x="2112" y="640" width="64" height="64"/>
+  <object id="24" x="1984" y="768" width="64" height="64"/>
+  <object id="25" x="1344" y="704" width="128" height="128"/>
+  <object id="28" x="1152" y="704" width="64" height="128"/>
+  <object id="29" x="896" y="704" width="128" height="128"/>
+  <object id="31" x="768" y="768" width="128" height="64"/>
+  <object id="32" x="1472" y="768" width="128" height="64"/>
+  <object id="33" x="320" y="1024" width="192" height="256"/>
+  <object id="34" x="192" y="1152" width="128" height="128"/>
+  <object id="35" x="256" y="1088" width="64" height="64"/>
+  <object id="36" x="128" y="1216" width="64" height="64"/>
+  <object id="37" x="448" y="896" width="64" height="128"/>
+  <object id="38" x="384" y="960" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="SpawnPoints">
+  <object id="40" x="64" y="1216" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Monsters">
+  <object id="5" x="1024" y="768" width="64" height="64"/>
+  <object id="6" x="1280" y="768" width="64" height="64"/>
+ </objectgroup>
+</map>

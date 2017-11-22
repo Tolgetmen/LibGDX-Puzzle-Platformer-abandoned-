@@ -1,49 +1,41 @@
 package com.harrynguon.platformer.screens;
 
-import com.badlogic.gdx.Game;
+import com.harrynguon.platformer.PlatformerGame;
 
 /**
- * Created by harry on 20/11/17.
+ * Created by Harry on 22/11/2017.
  */
 
-public class MainMenuScreen extends PlatformerScreen {
+public class MainMenuScreen extends BaseScreen {
 
-    public MainMenuScreen(Game game) {
+    public MainMenuScreen(PlatformerGame game) {
         super(game);
+
+    }
+
+
+    @Override
+    public void dispose() {
+
     }
 
     @Override
-    public void show() {
-        super.show();
+    public void render(float dt) {
+
     }
 
     @Override
-    public void render(float delta) {
-        super.render(delta);
+    public void handleInput() {
+
+    }
+
+    @Override
+    public void update(float dt) {
+
     }
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-    }
 
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
     }
 }
