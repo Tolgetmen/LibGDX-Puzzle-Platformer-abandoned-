@@ -1,11 +1,7 @@
 package com.harrynguon.platformer.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.harrynguon.platformer.PlatformerGame;
-import com.harrynguon.platformer.util.Assets;
 
 /**
  * Base Screen class that every game screen will extend. Everything that will be common with each
@@ -18,8 +14,6 @@ public abstract class BaseScreen implements Screen {
 
     /** Game instance used to access objects e.g. the World */
     protected PlatformerGame game;
-    /** Used to retrieve assets */
-    protected Assets assets;
 
     /**
      * Super constructor for each BaseScreen implementation. Game instance is common
@@ -27,7 +21,6 @@ public abstract class BaseScreen implements Screen {
      */
     public BaseScreen(PlatformerGame game) {
         this.game = game;
-        this.assets = game.getAssets();
     }
 
     /**

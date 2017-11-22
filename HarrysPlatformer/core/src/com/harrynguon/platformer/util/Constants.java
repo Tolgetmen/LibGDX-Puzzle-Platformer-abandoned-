@@ -1,7 +1,5 @@
 package com.harrynguon.platformer.util;
 
-import com.badlogic.gdx.physics.box2d.BodyDef;
-
 /**
  * These constants will hold all variables that are used throughout the game globally.
  *
@@ -21,10 +19,21 @@ public class Constants {
     public static final int PLAYER_HEIGHT = 256;
     public static final String PLAYER_ATLAS = "art/Spritesheet/alien_green/alien_green.pack";
 
-    /** Music & SFX */
+    /** Music & Sound Effects */
     public static final String MAIN_MENU_MUSIC = "sounds/mainmenu/mainmenu.wav";
     public static final String BUTTON_SOUND = "sounds/mainmenu/load.wav";
     public static final String LEVEL1_MUSIC = "sounds/level1/toesandwater.mp3";
+
+    /** Fonts */
+    public static final String MAIN_MENU_TITLE_FONT = "font/kenney high.fnt";
+    public static final String MAIN_MENU_BUTTONS_FONT = "font/kenney pixel.fnt";
+
+    /** Collision bits */
+    public static final short OBJECT_BIT = 1;
+    public static final short PLAYER_BIT = 2;
+    public static final short PLAYER_JUMP_BIT = 4;
+    public static final short ENEMY_BIT = 8;
+    public static final short LOCK_BIT = 16;
 
     /**
      * Private constructor, meaning this class cannot be instantiated

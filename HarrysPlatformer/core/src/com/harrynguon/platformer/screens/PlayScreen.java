@@ -17,7 +17,8 @@ import com.harrynguon.platformer.control.Controller;
 import com.harrynguon.platformer.entities.Player;
 import com.harrynguon.platformer.util.Assets;
 import com.harrynguon.platformer.util.Constants;
-import com.harrynguon.platformer.util.EntitySpawner;
+import com.harrynguon.platformer.world.EntitySpawner;
+import com.harrynguon.platformer.world.WorldContactListener;
 
 /**
  * This is the play screen class, responsible for rendering the current level in the game, along
@@ -43,6 +44,9 @@ public class PlayScreen extends BaseScreen {
     /** Player and input */
     private Player player;
     private Controller controller;
+    /** Play music after a delay */
+    private float initialMusic = 0f;
+    private boolean hasPlayed = false;
 
     /**
      * Constructs the play screen instance. All fields are initialised.
@@ -72,6 +76,7 @@ public class PlayScreen extends BaseScreen {
         entitySpawner = new EntitySpawner(this);
         player = entitySpawner.spawnPlayer();
         entitySpawner.spawnCollisionObjects();
+        world.setContactListener(new WorldContactListener(this));
         // scale the units to be as game units (pixels / PPM)
         renderer = new OrthogonalTiledMapRenderer(map, 1 / Constants.PPM);
         renderer.setView(camera);
@@ -81,7 +86,6 @@ public class PlayScreen extends BaseScreen {
         // initial camera position
         camera.position.x = player.b2body.getPosition().x;
         camera.position.y = player.b2body.getPosition().y;
-        Assets.instance.soundAssets.levelOne.play();
     }
 
     /**
@@ -93,10 +97,16 @@ public class PlayScreen extends BaseScreen {
     public void render(float dt) {
         // first update all new locations and positions of every entity
         update(dt);
-
+        if (!hasPlayed) {
+            initialMusic += dt;
+            if (initialMusic > 1.5f) {
+                Assets.instance.soundAssets.levelOne.play();
+                hasPlayed = true;
+            }
+        }
         // render the map first, followed by the collision boxes and then every entity on top
         renderer.render();
-        // b2dr.render(world, camera.combined);
+        b2dr.render(world, camera.combined);
         game.batch.setProjectionMatrix(viewport.getCamera().combined);
         game.batch.begin();
         player.draw(game.batch);
@@ -112,9 +122,10 @@ public class PlayScreen extends BaseScreen {
     @Override
     public void handleInput() {
         // jump up
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && player.canJump()) {
             player.b2body.applyLinearImpulse(new Vector2(0, 6f), player.b2body
                     .getWorldCenter(), true);
+            player.setCanJump(false);
         }
         // walk left
         if (controller.isLeft() && player.b2body.getLinearVelocity().x >= Constants
@@ -186,4 +197,7 @@ public class PlayScreen extends BaseScreen {
         return map;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 }

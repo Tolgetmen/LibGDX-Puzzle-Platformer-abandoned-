@@ -1,19 +1,17 @@
 package com.harrynguon.platformer.util;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Logger;
-import com.badlogic.gdx.utils.reflect.Constructor;
 
 /**
  * This class stores all of the assets in the game. This includes the images, levels, music,
@@ -29,6 +27,7 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public PlayerAssets playerAssets;
     public SoundAssets soundAssets;
+    public FontAssets fontAssets;
 
     /**
      * The instance of the asset manager to be parsed around (it will be contained inside the
@@ -49,10 +48,13 @@ public class Assets implements Disposable, AssetErrorListener {
         assetManager.load(Constants.MAIN_MENU_MUSIC, Music.class);
         assetManager.load(Constants.BUTTON_SOUND, Sound.class);
         assetManager.load(Constants.LEVEL1_MUSIC, Music.class);
+        assetManager.load(Constants.MAIN_MENU_TITLE_FONT, BitmapFont.class);
+        assetManager.load(Constants.MAIN_MENU_BUTTONS_FONT, BitmapFont.class);
         assetManager.finishLoading();
 
         playerAssets = new PlayerAssets((TextureAtlas) assetManager.get(Constants.PLAYER_ATLAS));
         soundAssets = new SoundAssets();
+        fontAssets = new FontAssets();
     }
 
     /**
@@ -103,6 +105,16 @@ public class Assets implements Disposable, AssetErrorListener {
             btnSound = assetManager.get(Constants.BUTTON_SOUND);
             levelOne = assetManager.get(Constants.LEVEL1_MUSIC);
             levelOne.setLooping(true);
+        }
+    }
+
+    public class FontAssets {
+        public final BitmapFont mainMenuTitleFont;
+        public final BitmapFont mainMenuButtonsFont;
+
+        public FontAssets() {
+            mainMenuTitleFont = assetManager.get(Constants.MAIN_MENU_TITLE_FONT);
+            mainMenuButtonsFont = assetManager.get(Constants.MAIN_MENU_BUTTONS_FONT);
         }
     }
 }

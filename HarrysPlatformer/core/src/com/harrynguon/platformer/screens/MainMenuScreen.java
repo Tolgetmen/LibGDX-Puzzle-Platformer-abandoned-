@@ -1,6 +1,5 @@
 package com.harrynguon.platformer.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -62,18 +61,18 @@ public class MainMenuScreen extends BaseScreen {
         //Create buttons
         // title
         TextButton.TextButtonStyle title = new TextButton.TextButtonStyle();
-        BitmapFont font = new BitmapFont();
-        font.getData().setScale(3f);
+        BitmapFont font = Assets.instance.fontAssets.mainMenuTitleFont;
+        font.getData().setScale(2f);
         font.setColor(new Color(Color.GOLDENROD));
         title.font = font;
+        TextButton titleLabel = new TextButton("The Lost Person (Prototype)", title);
         // labels
         TextButton.TextButtonStyle labels = new TextButton.TextButtonStyle();
-        BitmapFont labelsFont = new BitmapFont();
+        BitmapFont labelsFont = Assets.instance.fontAssets.mainMenuButtonsFont;
         labelsFont.getData().setScale(1.5f);
         labels.font = labelsFont;
-        TextButton titleLabel = new TextButton("The Lost Person (Prototype)", title);
+
         TextButton playButton = new TextButton("Play", labels);
-        playButton.setSize(200, 400);
         TextButton optionsButton = new TextButton("Options", labels);
         TextButton exitButton = new TextButton("Exit", labels);
 

@@ -3,18 +3,10 @@ package com.harrynguon.platformer.entities;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.Map;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.harrynguon.platformer.screens.PlayScreen;
 import com.harrynguon.platformer.util.Assets;
-import com.harrynguon.platformer.util.Constants;
 
 /**
  * This is the instance of the player that will be controlled within the game.
@@ -37,6 +29,7 @@ public class Player extends Sprite {
     public State previousState;
     private float stateTimer;
     private boolean runningRight;
+    private boolean canJump;
 
     /** The player will be inside a world with a physics simulation */
     private World world;
@@ -55,6 +48,7 @@ public class Player extends Sprite {
         previousState = State.STANDING;
         stateTimer = 0f;
         runningRight = true;
+        canJump = true;
         // set initial animation frame
         setRegion(Assets.instance.playerAssets.stand);
     }
@@ -121,5 +115,13 @@ public class Player extends Sprite {
 
     public void setB2body(Body b2body) {
         this.b2body = b2body;
+    }
+
+    public boolean canJump() {
+        return canJump;
+    }
+
+    public void setCanJump(boolean canJump) {
+        this.canJump = canJump;
     }
 }
