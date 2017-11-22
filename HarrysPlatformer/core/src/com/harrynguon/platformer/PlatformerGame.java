@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.harrynguon.platformer.screens.PlayScreen;
+import com.harrynguon.platformer.screens.MainMenuScreen;
 import com.harrynguon.platformer.util.Assets;
 
 /**
@@ -26,7 +26,7 @@ public class PlatformerGame extends Game {
 		batch = new SpriteBatch();
 		AssetManager assetManager = new AssetManager();
 		Assets.instance.init(assetManager);
-		setScreen(new PlayScreen(this));
+		setScreen(new MainMenuScreen(this));
 	}
 
 	/**

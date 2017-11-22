@@ -12,8 +12,12 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.harrynguon.platformer.entities.Player;
+import com.harrynguon.platformer.items.Item;
+import com.harrynguon.platformer.items.Key;
 import com.harrynguon.platformer.screens.PlayScreen;
+import com.harrynguon.platformer.util.Assets;
 import com.harrynguon.platformer.util.Constants;
 
 /**
@@ -27,6 +31,7 @@ public class EntitySpawner {
     private PlayScreen screen;
     private World world;
     private Map map;
+    private Array<Item> items;
 
     /**
      * Accesses the current world and map
@@ -36,6 +41,7 @@ public class EntitySpawner {
         this.screen = screen;
         world = screen.getWorld();
         map = screen.getMap();
+        items = new Array<Item>();
     }
 
     /**
@@ -139,8 +145,8 @@ public class EntitySpawner {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             bdef.type = BodyDef.BodyType.StaticBody;
             // set the Box2D rectangle to the correct location on the map
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) /  Constants.PPM,
-                    (rect.getY() + rect.getHeight() / 2) /  Constants.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / Constants.PPM,
+                    (rect.getY() + rect.getHeight() / 2) / Constants.PPM);
             // create the object within the world instance
             body = world.createBody(bdef);
             // set it is a rectangle shape and create the fixture
@@ -167,8 +173,8 @@ public class EntitySpawner {
             Rectangle rect = ((RectangleMapObject) lock).getRectangle();
             bdef.type = BodyDef.BodyType.StaticBody;
             // set the Box2D rectangle to the correct location on the map
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) /  Constants.PPM,
-                    (rect.getY() + rect.getHeight() / 2) /  Constants.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / Constants.PPM,
+                    (rect.getY() + rect.getHeight() / 2) / Constants.PPM);
             // create the object within the world instance
             body = world.createBody(bdef);
             // set it is a rectangle shape and create the fixture
@@ -178,4 +184,19 @@ public class EntitySpawner {
             body.createFixture(fdef);
     }
 
+    public void spawnKey() {
+        MapObject key = map.getLayers().get("Key").getObjects().getByType
+                (RectangleMapObject.class).first();
+        Rectangle rect = ((RectangleMapObject) key).getRectangle();
+        items.add(new Key(screen, Assets.instance.itemAssets.redKey,
+                (rect.getX() + rect.getWidth() / 2) / Constants.PPM,
+                (rect.getY() + rect.getHeight() / 2) / Constants.PPM));
+        /**
+         * Must add body and collision bit of KEY
+         */
+    }
+
+    public Array<Item> getItems() {
+        return items;
+    }
 }

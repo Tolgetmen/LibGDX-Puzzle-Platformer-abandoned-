@@ -26,6 +26,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public static final Assets instance = new Assets();
 
     public PlayerAssets playerAssets;
+    public ItemAssets itemAssets;
     public SoundAssets soundAssets;
     public FontAssets fontAssets;
 
@@ -45,6 +46,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public void init(AssetManager assetManager) {
         this.assetManager = assetManager;
         assetManager.load(Constants.PLAYER_ATLAS, TextureAtlas.class);
+        assetManager.load(Constants.ITEM_ATLAS, TextureAtlas.class);
         assetManager.load(Constants.MAIN_MENU_MUSIC, Music.class);
         assetManager.load(Constants.BUTTON_SOUND, Sound.class);
         assetManager.load(Constants.LEVEL1_MUSIC, Music.class);
@@ -53,6 +55,7 @@ public class Assets implements Disposable, AssetErrorListener {
         assetManager.finishLoading();
 
         playerAssets = new PlayerAssets((TextureAtlas) assetManager.get(Constants.PLAYER_ATLAS));
+        itemAssets = new ItemAssets((TextureAtlas) assetManager.get(Constants.ITEM_ATLAS));
         soundAssets = new SoundAssets();
         fontAssets = new FontAssets();
     }
@@ -90,6 +93,15 @@ public class Assets implements Disposable, AssetErrorListener {
             walkAnimations.add(new TextureRegion(atlas.findRegion("alienGreen_walk1")));
             walkAnimations.add(new TextureRegion(atlas.findRegion("alienGreen_walk2")));
             walk = new Animation<TextureRegion>(0.1f, walkAnimations, Animation.PlayMode.LOOP);
+        }
+    }
+
+    public class ItemAssets {
+
+        public final TextureRegion redKey;
+
+        public ItemAssets(TextureAtlas atlas) {
+            redKey = atlas.findRegion("keyRed");
         }
     }
 

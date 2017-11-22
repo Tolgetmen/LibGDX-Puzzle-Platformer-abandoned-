@@ -1,5 +1,6 @@
 package com.harrynguon.platformer.items;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.harrynguon.platformer.screens.PlayScreen;
 
 /**
@@ -8,7 +9,7 @@ import com.harrynguon.platformer.screens.PlayScreen;
 
 public class Key extends Item {
 
-    public Key(PlayScreen screen) {
-        super(screen);
+    public Key(PlayScreen screen, TextureRegion texture, float x, float y) {
+        super(screen, texture, x, y);
     }
 }

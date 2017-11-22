@@ -65,7 +65,7 @@ public class MainMenuScreen extends BaseScreen {
         font.getData().setScale(2f);
         font.setColor(new Color(Color.GOLDENROD));
         title.font = font;
-        TextButton titleLabel = new TextButton("The Lost Person (Prototype)", title);
+        TextButton titleLabel = new TextButton("The Wandering Alien (Prototype)", title);
         // labels
         TextButton.TextButtonStyle labels = new TextButton.TextButtonStyle();
         BitmapFont labelsFont = Assets.instance.fontAssets.mainMenuButtonsFont;
@@ -81,7 +81,7 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Assets.instance.soundAssets.mainMenu.stop();
-                Assets.instance.soundAssets.btnSound.play();
+                Assets.instance.soundAssets.btnSound.play(0.6f);
                 game.setScreen(new PlayScreen(game));
             }
         });
@@ -89,7 +89,7 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Assets.instance.soundAssets.mainMenu.stop();
-                Assets.instance.soundAssets.btnSound.play();
+                Assets.instance.soundAssets.btnSound.play(0.6f);
                 Gdx.app.exit();
             }
         });
@@ -109,7 +109,7 @@ public class MainMenuScreen extends BaseScreen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
+        Gdx.gl.glClearColor(.3f, .5f, .56f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.act();

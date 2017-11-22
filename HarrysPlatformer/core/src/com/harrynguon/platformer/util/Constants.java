@@ -28,12 +28,16 @@ public class Constants {
     public static final String MAIN_MENU_TITLE_FONT = "font/kenney high.fnt";
     public static final String MAIN_MENU_BUTTONS_FONT = "font/kenney pixel.fnt";
 
+    /** Items */
+    public static final String ITEM_ATLAS = "art/items/items.pack";
+
     /** Collision bits */
     public static final short OBJECT_BIT = 1;
     public static final short PLAYER_BIT = 2;
     public static final short PLAYER_JUMP_BIT = 4;
     public static final short ENEMY_BIT = 8;
     public static final short LOCK_BIT = 16;
+    public static final short KEY_BIT = 32;
 
     /**
      * Private constructor, meaning this class cannot be instantiated

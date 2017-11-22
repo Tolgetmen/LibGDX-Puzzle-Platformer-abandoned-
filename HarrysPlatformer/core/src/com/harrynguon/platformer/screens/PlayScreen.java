@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.harrynguon.platformer.PlatformerGame;
 import com.harrynguon.platformer.control.Controller;
 import com.harrynguon.platformer.entities.Player;
+import com.harrynguon.platformer.items.Item;
 import com.harrynguon.platformer.util.Assets;
 import com.harrynguon.platformer.util.Constants;
 import com.harrynguon.platformer.world.EntitySpawner;
@@ -69,6 +70,11 @@ public class PlayScreen extends BaseScreen {
         // game are messed up
         world = new World(new Vector2(0, -9.81f * 1.4f), true);
         b2dr = new Box2DDebugRenderer();
+        /**
+         * TODO :
+         * set all of the map stuff into a seperate class, so when a map gets traversed,
+         * no problems will be encountered
+         */
         // load the level and set the renderer for it
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("levels/level1.tmx");
@@ -76,6 +82,8 @@ public class PlayScreen extends BaseScreen {
         entitySpawner = new EntitySpawner(this);
         player = entitySpawner.spawnPlayer();
         entitySpawner.spawnCollisionObjects();
+        entitySpawner.spawnKey();
+        entitySpawner.spawnLockObject();
         world.setContactListener(new WorldContactListener(this));
         // scale the units to be as game units (pixels / PPM)
         renderer = new OrthogonalTiledMapRenderer(map, 1 / Constants.PPM);
@@ -86,6 +94,7 @@ public class PlayScreen extends BaseScreen {
         // initial camera position
         camera.position.x = player.b2body.getPosition().x;
         camera.position.y = player.b2body.getPosition().y;
+        Assets.instance.soundAssets.levelOne.play();
     }
 
     /**
@@ -99,8 +108,9 @@ public class PlayScreen extends BaseScreen {
         update(dt);
         if (!hasPlayed) {
             initialMusic += dt;
-            if (initialMusic > 1.5f) {
-                Assets.instance.soundAssets.levelOne.play();
+            if (initialMusic <= 4.0f) {
+                Assets.instance.soundAssets.levelOne.setVolume(initialMusic / 4);
+            } else {
                 hasPlayed = true;
             }
         }
@@ -110,6 +120,11 @@ public class PlayScreen extends BaseScreen {
         game.batch.setProjectionMatrix(viewport.getCamera().combined);
         game.batch.begin();
         player.draw(game.batch);
+        for (Item item: entitySpawner.getItems()) {
+            //if (!item.isPickedUp())
+            //^^ if so then destroy its body as well
+            item.draw(game.batch);
+        }
         game.batch.end();
     }
 
