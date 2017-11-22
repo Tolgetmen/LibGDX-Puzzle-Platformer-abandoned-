@@ -22,7 +22,8 @@ public class Constants {
     public static final String PLAYER_ATLAS = "art/Spritesheet/alien_green/alien_green.pack";
 
     /** Music & SFX */
-    public static final String MAIN_MENU_MUSIC = "sounds/mainmenu.wav";
+    public static final String MAIN_MENU_MUSIC = "sounds/mainmenu/mainmenu.wav";
+    public static final String BUTTON_SOUND = "sounds/mainmenu/load.wav";
 
     /**
      * Private constructor, meaning this class cannot be instantiated

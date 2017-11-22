@@ -82,6 +82,7 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Assets.instance.soundAssets.mainMenu.stop();
+                Assets.instance.soundAssets.btnSound.play();
                 game.setScreen(new PlayScreen(game));
             }
         });
@@ -89,6 +90,7 @@ public class MainMenuScreen extends BaseScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Assets.instance.soundAssets.mainMenu.stop();
+                Assets.instance.soundAssets.btnSound.play();
                 Gdx.app.exit();
             }
         });

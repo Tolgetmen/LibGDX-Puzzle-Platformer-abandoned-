@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -46,6 +47,7 @@ public class Assets implements Disposable, AssetErrorListener {
         this.assetManager = assetManager;
         assetManager.load(Constants.PLAYER_ATLAS, TextureAtlas.class);
         assetManager.load(Constants.MAIN_MENU_MUSIC, Music.class);
+        assetManager.load(Constants.BUTTON_SOUND, Sound.class);
         assetManager.finishLoading();
 
         playerAssets = new PlayerAssets((TextureAtlas) assetManager.get(Constants.PLAYER_ATLAS));
@@ -89,11 +91,14 @@ public class Assets implements Disposable, AssetErrorListener {
     }
 
     public class SoundAssets {
+
         public final Music mainMenu;
+        public final Sound btnSound;
 
         public SoundAssets() {
-            mainMenu = assetManager.get("sounds/mainmenu.wav");
+            mainMenu = assetManager.get(Constants.MAIN_MENU_MUSIC);
             mainMenu.setLooping(true);
+            btnSound = assetManager.get(Constants.BUTTON_SOUND);
         }
     }
 }
