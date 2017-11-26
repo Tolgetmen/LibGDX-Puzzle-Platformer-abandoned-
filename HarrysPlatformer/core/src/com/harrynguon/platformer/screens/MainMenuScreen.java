@@ -65,7 +65,7 @@ public class MainMenuScreen extends BaseScreen {
         font.getData().setScale(2f);
         font.setColor(new Color(Color.GOLDENROD));
         title.font = font;
-        TextButton titleLabel = new TextButton("The Wandering Alien (Prototype)", title);
+        TextButton titleLabel = new TextButton("The Lost Wanderer (Prototype)", title);
         // labels
         TextButton.TextButtonStyle labels = new TextButton.TextButtonStyle();
         BitmapFont labelsFont = Assets.instance.fontAssets.mainMenuButtonsFont;

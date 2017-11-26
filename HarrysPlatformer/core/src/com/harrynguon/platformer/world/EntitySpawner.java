@@ -157,6 +157,11 @@ public class EntitySpawner {
         }
     }
 
+    public void spawnItems() {
+        // todo -> iterate through Item layer and determine its value through the setting in the
+        // tiled map layer. from there, spawn an item or a lock or a key or diamonds, etc.
+    }
+
     /**
      * Spawn the lock as a collidable object until the key is picked up by the player
      */
@@ -178,7 +183,7 @@ public class EntitySpawner {
             // create the object within the world instance
             body = world.createBody(bdef);
             // set it is a rectangle shape and create the fixture
-            shape.setAsBox((rect.getWidth() / 2) / Constants.PPM, (rect.getHeight() / 2) /  Constants.PPM);
+            shape.setAsBox((rect.getWidth() / 2) / Constants.PPM, (rect.getHeight() / 2) / Constants.PPM);
             fdef.filter.categoryBits = Constants.LOCK_BIT;
             fdef.shape = shape;
             body.createFixture(fdef);
